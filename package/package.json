@@ -1,6 +1,6 @@
 {
-  "name": "@gajduk/mendixplatformsdk",
-  "version": "4.1.1",
+  "name": "@clevr/mendixplatformsdk",
+  "version": "4.1.2",
   "description": "Mendix Platform SDK",
   "main": "dist/mendix-platform-sdk.js",
   "scripts": {

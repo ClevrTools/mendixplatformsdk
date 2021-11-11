@@ -8,31 +8,30 @@ to update run `npm pack mendixmodelsdk` then `tar xzvf mendixplatformsdk-4.1.1.t
 
 ## Changes
 
-* `package.json` - Line: **2**
+- `package.json` - Line: **2**
 
 ```javascript
 //Original
 "name": "mendixplatformdk",
 // Updated
-"name": "@gajduk/mendixplatformdk",
+"name": "@clevr/mendixplatformdk",
 ```
 
-* `/dist/mendix-platform-sdk.js` - Line: **3**  
+- `/dist/mendix-platform-sdk.js` - Line: **3**
 
 ```javascript
 //Original
 const mendixmodelsdk_1 = require("mendixmodelsdk");
 // Updated
-const mendixmodelsdk_1 = require("@gajduk/mendixmodelsdk");
+const mendixmodelsdk_1 = require("@clevr/mendixmodelsdk");
 ```
 
-* `/dist/mendix-platform-sdk-d.ts` - Line: **2**  
-
+- `/dist/mendix-platform-sdk-d.ts` - Line: **2**
 
 ```javascript
 // Original
 import { ModelSdkClient, IModel } from "@mendixmodelsdk";
 
 // Updated
-import { ModelSdkClient, IModel } from "@gajduk/mendixmodelsdk";
+import { ModelSdkClient, IModel } from "@clevr/mendixmodelsdk";
 ```
