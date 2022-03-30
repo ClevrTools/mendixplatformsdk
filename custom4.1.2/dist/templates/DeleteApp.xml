@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exam="http://www.mendix.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exam:DeleteApp>
+         <User><%= User %></User>
+         <ApiKey><%= ApiKey %></ApiKey>
+         <ProjectID><%= ProjectID %></ProjectID>
+      </exam:DeleteApp>
+   </soapenv:Body>
+</soapenv:Envelope>

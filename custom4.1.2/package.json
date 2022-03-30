@@ -13,6 +13,7 @@
     "build": "tsc",
     "build-ci": "tsc",
     "build-publish": "tsc -p tsconfig.lib.json",
+    "prepublishOnly": "yarn clean && yarn build-publish",
     "clean": "rm -rf dist/ doc/generated-doc",
     "link-package": "(yarn unlink --silent || true) && yarn link --silent",
     "lint": "tslint --project tsconfig.json --format msbuild",
