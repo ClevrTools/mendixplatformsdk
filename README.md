@@ -4,7 +4,7 @@ A fork of npm mendixmodelsdk
 
 Use to to keep customizations and bugfixes for the npm module while updating.
 
-to update run `npm pack mendixmodelsdk` then `tar xzvf mendixplatformsdk-4.1.1.tgz`
+to update run `npm pack mendixplatformsdk` then `tar xzvf mendixplatformsdk-5.1.1.tgz`
 
 ## Changes
 
