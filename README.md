@@ -26,12 +26,14 @@ const mendixmodelsdk_1 = require("mendixmodelsdk");
 const mendixmodelsdk_1 = require("@clevr/mendixmodelsdk");
 ```
 
-- `/dist/mendix-platform-sdk-d.ts` - Line: **2**
+- `/dist/RepositoriesClient` - Line: **38/39**
 
 ```javascript
 // Original
-import { ModelSdkClient, IModel } from "@mendixmodelsdk";
+maxAttempts: 3,
+retryDelayMs: 200,
 
 // Updated
-import { ModelSdkClient, IModel } from "@clevr/mendixmodelsdk";
+maxAttempts: 120,
+retryDelayMs: 2000,
 ```
