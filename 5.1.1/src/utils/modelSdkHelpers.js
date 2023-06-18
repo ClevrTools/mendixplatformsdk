@@ -5,10 +5,10 @@ const mendixmodelsdk_1 = require("@clevr/mendixmodelsdk");
 const config_1 = require("./config");
 /** @internal */
 function getModelSdkClient() {
-    return mendixmodelsdk_1.Model.createSdkClient({
-        endPoint: (0, config_1.getPlatformConfig)().modelServerEndpoint,
-        credentials: { personalAccessToken: (0, config_1.getMendixToken)() }
-    });
+  return mendixmodelsdk_1.Model.createSdkClient({
+    endPoint: (0, config_1.getPlatformConfig)().modelServerEndpoint,
+    credentials: { personalAccessToken: (0, config_1.getMendixToken)() }
+  });
 }
 exports.getModelSdkClient = getModelSdkClient;
 //# sourceMappingURL=modelSdkHelpers.js.map

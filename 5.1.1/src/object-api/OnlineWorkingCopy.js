@@ -1,19 +1,14 @@
-import { IModel } from "@clevr/mendixmodelsdk";
-import { ICommitTemporaryWorkingCopyOptions } from "../clients";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OnlineWorkingCopy = void 0;
+const clients_1 = require("../clients");
+const modelSdkHelpers_1 = require("../utils/modelSdkHelpers");
 /** The object API of the online working copy, which can be used to open and edit its contents and to commit made changes. */
-export declare class OnlineWorkingCopy {
-    constructor(appId: string, workingCopyId: string);
-    /**
-     * The App ID used to uniquely identify the Mendix app. The App ID can be found in the
-     * [Developer Portal](https://home.mendix.com) under the General Settings page of the app.
-     *
-     * Note: the App ID is sometimes also called Project ID.
-     */
-    readonly appId: string;
-    /**
-     * The working copy ID used to uniquely identify the online working copy.
-     */
-    readonly workingCopyId: string;
+class OnlineWorkingCopy {
+    constructor(appId, workingCopyId) {
+        this.appId = appId;
+        this.workingCopyId = workingCopyId;
+    }
     /**
      * Open the model of the online working copy. This can be used to read and edit the contents of the online working copy of the app.
      *
@@ -21,7 +16,9 @@ export declare class OnlineWorkingCopy {
      *
      * @returns The model of the online working copy.
      */
-    openModel(): Promise<IModel>;
+    async openModel() {
+        return (0, modelSdkHelpers_1.getModelSdkClient)().openWorkingCopy(this.workingCopyId);
+    }
     /**
      * Commit the changes of the working copy to the model repository.
      *
@@ -36,5 +33,9 @@ export declare class OnlineWorkingCopy {
      *
      * @param options The options to use to commit the working copy such as commit ID and message.
      */
-    commitToRepository(branchName?: string, options?: ICommitTemporaryWorkingCopyOptions): Promise<void>;
+    async commitToRepository(branchName, options) {
+        return new clients_1.RepositoriesClient().commitTemporaryWorkingCopy(this.appId, this.workingCopyId, branchName, options);
+    }
 }
+exports.OnlineWorkingCopy = OnlineWorkingCopy;
+//# sourceMappingURL=OnlineWorkingCopy.js.map

@@ -35,8 +35,8 @@ class RepositoriesClient {
             });
             return response.result?.workingCopyId;
         }, {
-            maxAttempts: 120, // 3,
-            retryDelayMs: 2000, // 200,
+            maxAttempts: 3,
+            retryDelayMs: 200,
             shouldRetry: error => !["RS400", "RS401", "RS403", "RS404"].includes(error.errorCode)
         });
         logger_1.logger.info(`Successfully created temporary working copy with id '${workingCopyId}' based on branch '${branchName}'`);
