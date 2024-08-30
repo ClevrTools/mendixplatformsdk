@@ -5,8 +5,7 @@ const defaultConfig = {
     repositoryServiceEndpoint: "https://repository.api.mendix.com",
     modelServerEndpoint: "https://model.api.mendix.com",
     projectServiceEndpoint: "https://projectservice.mendix.com",
-    mendixToken: process.env.MENDIX_TOKEN || "",
-    taskPollingTimeoutInMs: 900000
+    mendixToken: process.env.MENDIX_TOKEN || ""
 };
 let platformConfig = { ...defaultConfig };
 /**

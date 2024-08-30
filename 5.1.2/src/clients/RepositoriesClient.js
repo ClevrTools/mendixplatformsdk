@@ -32,7 +32,7 @@ class RepositoriesClient {
                 projectId: appId,
                 branchName,
                 commitId: options?.commitId
-            }, "POST", (0, config_1.getPlatformConfig)().taskPollingTimeoutInMs);
+            });
             return response.result?.workingCopyId;
         }, {
             maxAttempts: 120, // 3,
@@ -68,7 +68,7 @@ class RepositoriesClient {
                 force: options?.force,
                 targetCommitId: options?.targetCommitId
             };
-            await this.restConnector.awaitTask(`/v1/temporary-working-copies/${workingCopyId}/commit`, body, "POST", (0, config_1.getPlatformConfig)().taskPollingTimeoutInMs);
+            await this.restConnector.awaitTask(`/v1/temporary-working-copies/${workingCopyId}/commit`, body);
         }, {
             maxAttempts: 3,
             retryDelayMs: 200,

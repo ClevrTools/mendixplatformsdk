@@ -21,19 +21,11 @@ class AppsClient {
      */
     async createNewApp(appName, options) {
         const { summary, image, repositoryType, templateId, templateDownloadURL } = options ?? {};
-        if (templateDownloadURL) {
-            logger_1.logger.warn("The parameter 'templateDownloadURL' is deprecated and the server currently ignores this field");
-        }
-        const createAppBody = {
-            name: appName,
-            summary,
-            image,
-            repository_type: repositoryType || "git",
-            use_app_template: true
-        };
-        if (templateId) {
+        const createAppBody = { name: appName, summary, image, repository_type: repositoryType, use_app_template: true };
+        if (templateId || templateDownloadURL) {
             createAppBody.app_template = {
-                template_id: templateId
+                template_id: templateId,
+                template_download_url: templateDownloadURL
             };
         }
         logger_1.logger.info(`Creating new app '${appName}'...`);

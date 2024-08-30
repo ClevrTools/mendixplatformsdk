@@ -5,7 +5,6 @@ const got_1 = require("got");
 /** @internal */
 class RestConnector {
     constructor(baseURL, credentials, validateStatus = true, headers = {}) {
-        this.AWAIT_TASK_TIMEOUT_IN_MS = 900000; // 15m
         this.defaultOptions = {
             url: baseURL,
             throwHttpErrors: validateStatus,
@@ -82,19 +81,12 @@ class RestConnector {
             json: body
         });
     }
-    async awaitTask(url, body, method = "POST", timeoutInMs = this.AWAIT_TASK_TIMEOUT_IN_MS) {
+    async awaitTask(url, body, method = "POST") {
         const result = await doRequest({ ...this.defaultOptions, method, pathname: url, json: body });
         if (result.status !== 202) {
             throw new Error(`Invalid HTTP status ${result.status} while ${method}ing task to '${url}': ${JSON.stringify(result.data)}`);
         }
         const { taskId } = result.data;
-        const lastTaskData = await withTimeout(this.waitRunningTask(taskId), timeoutInMs);
-        if (lastTaskData.status !== "finished") {
-            throw lastTaskData.result;
-        }
-        return lastTaskData;
-    }
-    async waitRunningTask(taskId) {
         let lastTaskData = { status: "running" };
         while (lastTaskData.status === "running") {
             await delay(500);
@@ -103,6 +95,9 @@ class RestConnector {
                 throw new Error(`HTTP status ${response.status} while retrieving task ${taskId}: ${JSON.stringify(response.data)}`);
             }
             lastTaskData = response.data;
+        }
+        if (lastTaskData.status !== "finished") {
+            throw lastTaskData.result;
         }
         return lastTaskData;
     }
@@ -166,11 +161,5 @@ function createInformativeError(message, response) {
 }
 async function delay(duration) {
     return new Promise(resolve => setTimeout(resolve, duration));
-}
-async function withTimeout(promise, timeoutInMs) {
-    let timeoutHandle;
-    const timeoutPromise = new Promise((_, reject) => (timeoutHandle = setTimeout(() => reject(new Error("Timeout exceeded")), timeoutInMs)));
-    const result = await Promise.race([promise.finally(() => clearTimeout(timeoutHandle)), timeoutPromise]);
-    return result;
 }
 //# sourceMappingURL=RestConnector.js.map

@@ -1,7 +1,7 @@
 {
   "name": "@clevr/mendixplatformsdk",
   "description": "Mendix Platform SDK",
-  "version": "5.1.3",
+  "version": "5.1.2",
   "author": "Mendix",
   "license": "MIT",
   "engines": {
@@ -18,14 +18,18 @@
     "doc": "../node_modules/.bin/typedoc --name 'Mendix Platform SDK' --out doc/generated-doc --excludePrivate --excludeExternals --disableSources --readme README.md --includeVersion --exclude '**/test/**' src/index.ts"
   },
   "devDependencies": {
-    "@clevr/mendixmodelsdk": "^4.86.0"
+    "@clevr/mendixmodelsdk": "^4.56.0"
   },
   "peerDependencies": {
-    "@clevr/mendixmodelsdk": "^4.86.0"
+    "@clevr/mendixmodelsdk": "^4.56.0"
+  },
+  "resolutions": {
+    "mendixmodelsdk/**/@types/eventsource": "1.1.8"
   },
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
   "dependencies": {
+    "@types/eventsource": "1.1.8",
     "mobx": "^5.0.0",
     "wolfy87-eventemitter": "^5.2.1",
     "eventsource": "^2.0.2",

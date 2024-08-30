@@ -15,17 +15,16 @@ export interface ICreateNewAppOptions {
      */
     repositoryType?: RepositoryType;
     /**
-     * Note: This parameter is deprecated and the server currently ignores this field
-     *
      * URL of the download location of the app template package file (mpk).
      * If the template package is private, this URL must be authenticated with a signature.
      *
+     * When neither `templateDownloadURL` or `templateId` are set, the default Blank App is used for app initialization.
      */
     templateDownloadURL?: string;
     /**
      * UUID of the app template the app should be based on. If left blank the app will be created using the standard blank app template in the latest Mendix version.
      *
-     * When `templateId` is not set, the default Blank App is used for app initialization.
+     * When neither `templateDownloadURL` or `templateId` are set, the default Blank App is used for app initialization.
      */
     templateId?: string;
 }

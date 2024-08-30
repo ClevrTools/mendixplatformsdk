@@ -10,8 +10,6 @@ export interface IMendixPlatformConfig {
     projectServiceEndpoint: string;
     /** Personal access token for Mendix API. You can create it via https://warden.mendix.com */
     mendixToken: string;
-    /** Task polling timeout. Default is 15 minutes */
-    taskPollingTimeoutInMs: number;
 }
 /**
  * Set the platform endpoints and credentials.

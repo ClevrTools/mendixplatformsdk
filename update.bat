@@ -1,5 +1,5 @@
 npm pack mendixplatformsdk
-tar xzvf mendixplatformsdk-5.1.1a.tgz
+tar xzvf mendixplatformsdk-5.1.3.tgz
 
 REM apply manual changes
 
